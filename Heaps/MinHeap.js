@@ -60,7 +60,7 @@ class MinHeap {
     }
 
     add(val) {
-        this.push(val);
+        this.heap.push(val);
         this.heapifyUp();
     }
 
