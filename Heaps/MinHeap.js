@@ -69,6 +69,10 @@ class MinHeap {
         this.heap[idx1] = this.heap[idx2];
         this.heap[idx2] = temp;
     }
+
+    getLength() {
+        return this.heap.length;
+    }
 }
 
 // Test
