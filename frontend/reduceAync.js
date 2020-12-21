@@ -7,6 +7,8 @@ const reduceAsync = async (arr, fn, initalValue) => {
     return acc;
 };
 
+new Promise((resolve) => setTimeout(resolve, 1000))
+
 const a = () => Promise.resolve('a');
 const b = () => Promise.resolve('b');
 const c = () => new Promise(resolve => setTimeout(() => resolve('c'), 100));
