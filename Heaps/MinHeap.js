@@ -1,6 +1,6 @@
 class MinHeap {
     constructor(values) {
-        this.heap = values;
+        this.heap = values || [];
     }
 
     getChildIndices(parentIdx) {
@@ -25,8 +25,7 @@ class MinHeap {
         return this.heap[0];
     }
 
-    heapifyDown() {
-        let index = 0;
+    heapifyDown(index = 0) {
         let childIndices = this.getChildIndices(index);
         while (this.heap[childIndices[0]] !== undefined) {
             let smallerChildIdx = childIndices[0];
@@ -42,8 +41,7 @@ class MinHeap {
         }
     }
 
-    heapifyUp() {
-        let index = this.heap.length - 1;
+    heapifyUp(index = this.heap.length - 1) {
         let parentIdx = this.getParentIndex(index);
         while (parentIdx !== undefined && this.heap[index] < this.heap[parentIdx]) {
             this.swap(parentIdx, index);
@@ -73,13 +71,25 @@ class MinHeap {
     getLength() {
         return this.heap.length;
     }
+
+    remove(el) {
+        const idx = this.heap.indexOf(el);
+        if (idx === -1) {
+            return idx;
+        };
+        this.swap(idx, this.getLength() - 1);
+        this.heap.pop();
+        this.heapifyDown(idx);
+        return el;
+    }
 }
 
 // Test
 let heap = new MinHeap([7, 4, 5, 6, 8]);
 heap.heapifyDown();
 console.log(heap, 'should equal [4, 6, 5, 7, 8]')
-
+heap.remove(6);
+console.log(heap, 'should equal [ 4, 7, 5, 8 ]')
 heap = new MinHeap([3, 4, 5, 1]);
 heap.heapifyUp();
 console.log(heap, 'should equal [1, 3, 5, 4]')
