@@ -1,0 +1,5 @@
+employee,manager
+jack@lattice.com,
+bob@lattice.com,jack@lattice.com
+jamie@lattice.com,bob@lattice.com
+jack@lattice.com,jamie@lattice.com
